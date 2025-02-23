@@ -1,7 +1,10 @@
-name: CI/CD
+name: CI
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -26,27 +29,3 @@ jobs:
       - name: Run tests
         run: |
           pytest --maxfail=1 --disable-warnings -q
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.12
-
-      - name: Build distribution
-        run: |
-          pip install --upgrade pip setuptools wheel
-          python setup.py sdist bdist_wheel
-
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.5.0
-        with:
-          user: ${{ secrets.PYPI_USERNAME }}
-          password: ${{ secrets.PYPI_PASSWORD }}
