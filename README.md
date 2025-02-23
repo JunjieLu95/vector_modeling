@@ -10,7 +10,7 @@ The other class is a subclass for 3D vectors, and provides the cross product.
 ## Install from GitHub
 
 Vector_Modeling is a small, lightweight library and doesn't require a complex environment.  
-You can install it from PyPI with this command:
+You can install it from Github with this command:
 
 ```sh
 pip install git+https://github.com/JunjieLu95/vector_modeling.git
