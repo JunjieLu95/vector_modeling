@@ -14,6 +14,7 @@ You can install it from PyPI with this command:
 
 ```sh
 pip install vector_modeling
+```
 
 ## About Vector_Modeling
 
